@@ -1,0 +1,18 @@
+<header class="mb-auto ">
+    <div>
+        <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+        <nav class="nav navbar-expand-lg nav-masthead md-justify-content-center float-md-right">
+            <div class="container-fluid">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                <% if(!currentUser) { %>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Register</a>
+                <% } else { %>
+                <a class="nav-link" href="/logout">Logout</a>
+            </div>
+            
+            <% } %>
+        </nav>
+    </div>
+</header>

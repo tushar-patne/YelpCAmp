@@ -11,6 +11,10 @@ ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200');
 })
 
+ImageSchema.virtual('showPageImage').get(function () {
+    return this.url.replace('/upload', '/upload/c_scale,w_1200,h_700')
+})
+
 const opts = { toJSON: { virtuals: true } };
 
 const CampgroundSchema = new Schema({
@@ -55,17 +59,14 @@ CampgroundSchema.post('findOneAndDelete', async(campground) => {
             }
         })
     }
-    if (campground.images) {
-        const seeds = [
-            'YelpCamp/lkmdoxrkhzz6yujdysto',
-            'YelpCamp/aworaaecyr8cy8njnbxv'
-        ]
-        for (let img of images){
-            if(!(img.filename in seeds)){
-                await cloudinary.uploader.destroy(img.filename);
-            }
-        }
-    }
+    // if (campground.images.length) {
+    //     const seeds = ['YelpCamp/lkmdoxrkhzz6yujdysto','YelpCamp/aworaaecyr8cy8njnbxv'];
+    //     for (let img of images){
+    //         if(!(img.filename in seeds)){
+    //             await cloudinary.uploader.destroy(img.filename);
+    //         }
+    //     }
+    // }
 })
 
 
